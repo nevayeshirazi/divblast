@@ -1,0 +1,39 @@
+﻿.btn-left-icon {
+    margin-right:8px;
+}
+
+.page-content {
+    background-color: white !important;
+}
+
+.tabbable-custom > .nav-tabs > li {
+    border-radius:3px;
+}
+
+.tabbable-custom > .nav-tabs > li.active {
+    border-top: 3px solid #4B77BE !important;
+}
+
+.portlet.last {
+    margin-bottom: 0 !important;
+}
+
+.header-logo {
+    cursor:pointer;
+    padding: 15px 0 15px 0;
+    margin-bottom:10px;
+    border-bottom:1px solid #eee;
+}
+
+.header-logo > span {
+    font-size:20px;
+    vertical-align:middle;
+}
+
+.header-logo > img {
+    margin-right:8px;
+}
+
+.help-block.has-error {
+    color:#a94442;
+}

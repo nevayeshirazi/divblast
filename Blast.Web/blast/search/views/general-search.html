@@ -1,0 +1,206 @@
+﻿
+<div class="page-content">
+    <div class="container" ng-controller="BlastSearchCtrl">
+        <form novalidate class="horizontal-form" ng-submit="beginSearch()" name="searchForm">
+            <div class="tabbable tabbable-custom boxless tabbable-reversed" style="overflow:visible;">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#tab_1_1" data-toggle="tab" aria-expanded="true"><i class="fa fa-search"></i> Search Query</a>
+                    </li>
+                    <li>
+                        <a href="#tab_1_2" data-toggle="tab" aria-expanded="false"><i class="fa fa-cog"></i>  Settings</a>
+                    </li>
+                    <li>
+                        <a href="#tab_1_3" data-toggle="tab" aria-expanded="false"><i class="fa fa-bookmark"></i>  History</a>
+                    </li>
+                </ul>
+                <div class="tab-content" style="padding-bottom:0;">
+                    <div class="tab-pane active" id="tab_1_1">
+
+                        <div class="form-body">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="portlet light bg-inverse last">
+                                        <div class="portlet-title">
+                                            <div class="caption">
+                                                <i class="icon-paper-plane font-green-haze"></i>
+                                                <span class="caption-subject bold font-green-haze uppercase">
+                                                    Search Query
+                                                </span>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="portlet-body">
+                                            <div class="form-group">
+                                                <label class="control-label font-blue-dark"><strong> Search Query</strong></label>
+                                                <textarea type="text" class="form-control" ng-model="search.query" placeholder="Enter query sequence(s) in the text area. You may enter protein in fasta format." rows="5" required input-validate></textarea>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label font-blue-dark"><strong> Email Address</strong></label>
+                                                <input type="email" ng-model="search.email" class="form-control" input-validate />
+                                                <span class="help-block">If you want to get an email about the summary of your search, please enter your e-mail address.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="tab-pane" id="tab_1_2">
+                        <div class="form-body">
+
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <div class="portlet light bg-inverse">
+                                        <div class="portlet-title">
+                                            <div class="caption">
+                                                <i class="icon-paper-plane font-green-haze"></i>
+                                                <span class="caption-subject bold font-green-haze uppercase">
+                                                    Database & Results Settings
+                                                </span>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="portlet-body">
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label font-blue-dark"><strong> Databases</strong></label>
+                                                        <select class="bs-select selectpicker form-control" multiple select-picker required ng-model="search.databases" required input-validate>
+                                                            <option value="0">UniProt KN / SwissProt</option>
+                                                            <option value="1">UniProt KN</option>
+                                                            <option value="2">UniRef 50</option>
+                                                            <option value="3">UniRef 90</option>
+                                                            <option value="4">UniRef 100</option>
+                                                        </select>
+
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label font-blue-dark"><strong> Blast Algorithm</strong></label>
+                                                        <select class="bs-select selectpicker form-control" select-picker ng-model="search.blastAlgorithm" required>
+                                                            <option selected>PSI-BLAST</option>
+                                                            <option>BLASTP</option>
+                                                        </select>
+
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label font-blue-dark"><strong> Maximum Target Sequences</strong></label>
+                                                        <input type="number" class="form-control" ng-model="search.maxTargetSequences" required input-validate />
+                                                        <span class="help-block">Maximum number of aligned sequences to display.</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label font-blue-dark"><strong> Expect Threshold</strong></label>
+                                                        <select class="bs-select selectpicker form-control" select-picker ng-model="search.expectThreshold" required>
+                                                            <option value="0">1.0e-200</optionvalue>
+                                                            <option value="1">1.0e-100</option>
+                                                            <option value="2">1.0e-50</option>
+                                                            <option value="3">1.0e-10</option>
+                                                            <option value="4">1.0e-5</option>
+                                                            <option value="5">1.0e-4</option>
+                                                            <option value="6">1.0e-3</option>
+                                                            <option value="7">1.0e-2</option>
+                                                            <option value="8">0.1</option>
+                                                            <option value="9">1.0</option>
+                                                            <option value="10" selected>10</option>
+                                                            <option value="11">100</option>
+                                                            <option value="12">1000</option>
+
+
+                                                        </select>
+                                                        <span class="help-block"> The expected threshold value for the BLAST search.</span>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <div class="portlet light bg-inverse last">
+                                        <div class="portlet-title">
+                                            <div class="caption">
+                                                <i class="icon-paper-plane font-green-haze"></i>
+                                                <span class="caption-subject bold font-green-haze uppercase">
+                                                    Diversity Settings
+                                                </span>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="portlet-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label font-blue-dark"><strong> Diversity Algorithm</strong></label>
+                                                        <select class="bs-select selectpicker form-control" select-picker ng-model="search.diversityAlgorithm" required ng-model="search.diversityAlgorithm">
+                                                            <option value="0">Bitwise Comparison</option>
+                                                            <option value="1">Entropy Based</option>
+                                                            <option value="2">No Diversity</option>
+                                                        </select>
+                                                        <span class="help-block"> Diversity algorithm to be used in search results.</span>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label font-blue-dark"><strong> Similarity vs. Diversity ({{search.diversityRatio}} %)</strong></label>
+                                                        <div class="noUi-control noUi-success" slider style="margin-top:9px;" ng-model="search.diversityRatio">
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="tab-pane" id="tab_1_3">
+                    </div>
+
+                </div>
+
+                <hr>
+                <div class="form-actions right">
+                    <button type="submit" class="btn blue" ng-disabled="searchForm.$invalid || loading"><i class="fa btn-left-icon" ng-class="loading ? 'fa-spin fa-spinner' : 'fa-search'"></i> <span ng-show="loading">Searching</span> <span ng-hide="loading"> Start Search</span></button>
+                    <a class="btn blue-hoki" ng-disabled="loading"> <i class="fa fa-upload  btn-left-icon"></i> Upload File</a>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
